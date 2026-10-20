@@ -1,0 +1,23 @@
+name: astrbot_plugin_deepseek_websearch
+display_name: DeepSeek 联网搜索
+desc: "把 DeepSeek 官方的 Search / Fetch 接口包成模型可自主调用的工具：需要实时信息时自动搜索，摘要不够时再抓网页正文。注入上下文用官方面向模型生成的 summary 字段、按 rerank_score 剔除低相关结果、回传用户原话提升消歧，并内置 5QPS 限流与 429 退避重试。已在插件配置里填好 API Key 即可使用，与主模型是谁无关。"
+short_desc: DeepSeek 官方搜索/抓取接口的 LLM 工具封装
+author: Randy Lua
+repo: https://github.com/RandyLuaW/astrbot_plugin_deepseek_websearch
+version: 1.0.0
+astrbot_version: ">=4.17.0"
+support_platforms:
+  - aiocqhttp
+  - telegram
+  - discord
+  - slack
+  - kook
+  - wecom
+  - lark
+  - dingtalk
+  - webchat
+tags:
+  - 联网搜索
+  - 网页抓取
+  - DeepSeek
+  - 工具调用

@@ -1,0 +1,77 @@
+{
+  "enabled": {
+    "type": "bool",
+    "default": true,
+    "description": "总开关。关闭后模型不再看到搜索/抓取工具。"
+  },
+  "api_key": {
+    "type": "string",
+    "default": "",
+    "description": "DeepSeek API Key（platform.deepseek.com 申请）。与对话用的是同一把 key，Search/Fetch 按 ¥5/千次成功请求单独计费。"
+  },
+  "base_url": {
+    "type": "string",
+    "default": "https://api.deepseek.com",
+    "description": "接口地址。一般不用改；若走自建中转再调整。"
+  },
+  "enable_search_tool": {
+    "type": "bool",
+    "default": true,
+    "description": "启用 ds_search（联网搜索）。"
+  },
+  "enable_fetch_tool": {
+    "type": "bool",
+    "default": true,
+    "description": "启用 ds_fetch_page（抓网页正文）。建议开启：模型发现摘要不够时会自己深读一篇，比一次拉多条全文省得多。"
+  },
+  "enable_command": {
+    "type": "bool",
+    "default": true,
+    "description": "启用 /ds搜 关键词 手动搜索指令（方便调试与人工触发，不带模型润色）。"
+  },
+  "default_count": {
+    "type": "int",
+    "default": 5,
+    "description": "模型未指定条数时默认返回几条。建议 3~6：太多会挤占上下文。"
+  },
+  "max_count": {
+    "type": "int",
+    "default": 10,
+    "description": "单次允许返回的条数上限（官方接口上限 50，这里默认收紧到 10）。"
+  },
+  "min_rerank_score": {
+    "type": "float",
+    "default": 1.5,
+    "description": "相关度阈值。rerank_score 低于此值的结果直接丢弃（官方口径 1.5 以上为高质量）。设 0 表示不过滤。"
+  },
+  "mark_authority": {
+    "type": "bool",
+    "default": true,
+    "description": "给 authority>=3 的结果标注「高权威」，帮助模型判断该信谁。"
+  },
+  "max_context_chars": {
+    "type": "int",
+    "default": 4000,
+    "description": "搜索结果注入上下文的总字数上限，超出部分不再展开。"
+  },
+  "max_item_content_chars": {
+    "type": "int",
+    "default": 1500,
+    "description": "单条结果附带正文时的截断长度（仅 need_content=true 时生效）。"
+  },
+  "request_timeout": {
+    "type": "int",
+    "default": 30,
+    "description": "单次请求超时（秒）。Fetch 抓大页面时可能较慢，不建议低于 20。"
+  },
+  "qps_limit": {
+    "type": "float",
+    "default": 4.0,
+    "description": "每秒请求上限。官方账号级限额是 Search/Fetch 各 5 QPS，这里默认留出余量。"
+  },
+  "debug": {
+    "type": "bool",
+    "default": false,
+    "description": "输出调试日志（查询词、返回条数、重试原因）。"
+  }
+}
